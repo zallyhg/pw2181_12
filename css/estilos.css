@@ -4,24 +4,49 @@ body{
 	background:  rgba(155,155,155,0.5);
 	color: white;
 }
+footer{
+	border: 1px solid orange;
+	font-weight: bold;
+	font-size: 30px;
+	padding: 50px;
+	text-align: center;
+}
 
 header{
 	border: 1px solid black;
 	text-align: center;
+	margin-bottom: 20px;
 }
 header nav ul li {
 	background: orange;
 	border: 1px solid grey;
 	border-radius: 5px;
 	display: inline-block;
+	margin-right: 20px;
+	/*	margin: 0px 20px 0px 20px;*/
+	padding: 15px 50px;
 	width: 90 px;
 	/*text-align: left;*/
 }
 header nav ul li:hover{
 	background: grey;
 	border: 1px solid orange;
-	border-radius: 5px;
+	border-radius: 12px;
 	display: inline-block;
+	padding: 12px 50px;
 	width: 90 px;
 	/*text-align: left;*/
+}
+main article{
+	/*Linea punteada*/
+	border: 1px dashed black;
+	color: black;
+	/* para que esten a lado uno del otre*/
+	display: inline-block;
+	/* para que no se hagan para abajo sino para arriba*/
+	vertical-align: top;
+	/*porcentaje de ancho*/
+	width: 32.65%;
+
+
 }
