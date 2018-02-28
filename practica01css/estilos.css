@@ -1,0 +1,12 @@
+body{
+
+}
+
+
+nav{
+	background:  blue;
+	border: 1px solid grey;
+	border-radius: 5px;
+	display: inline-block;
+	margin-right: 20px;
+}
