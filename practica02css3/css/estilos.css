@@ -1,0 +1,23 @@
+/*Arriba hacia abajo e izq a derecha*/
+body{
+	font-size: 16px; /*1 em*/
+	margin: 0 auto;
+	max-width: 1078px ;
+	min-width: 1078px;
+}
+
+header input{
+	float: right;
+	margin-right: -250px;
+	position: relative;
+}
+
+#granthams{
+	margin-top: 25px;
+	margin-left: 25px;
+}
+
+#paint{
+	float: right;
+
+}
