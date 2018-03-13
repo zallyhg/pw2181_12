@@ -1,0 +1,24 @@
+
+body{
+	font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.letragrande{
+	font-size: 1.em;
+}
+.letramediana{
+	font-size: 1em;
+}
+.nito{
+	font-weight: bold;
+}
