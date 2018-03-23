@@ -7,7 +7,7 @@ article{
 	text-align: center;
 	width: 400px;
 	/* todo el camino 5segundosTiempo manera*/
-	-o-transition: all 5s linear;
+	-o-transition: all 1s linear;
 	-webkit-transition: all 5s linear;
 	-ms-transition: all 5s linear;
 	-moz-transition: all 5s linear;
@@ -27,9 +27,9 @@ article p{
 article:hover {
 	background: black;
 	color: greenyellow;
-	-o-transform: translate(150px,300px);
-	-ms-transform: translate(150px,300px);
-	-webkit-transform: translate(150px,300px);
-	-moz-transform: translate(150px,300px);
-	transform: translate(150px,300px);	
+	-o-transform:   skew(-10deg,10deg);  /*scale(3.5);   rotate(360deg);translate(150px,300px);*/
+	-ms-transform:    skew(-10deg,10deg) ;  /*scale(3.5);   rotate(360deg);  translate(150px,300px);*/	
+	-webkit-transform:   skew(-10deg,10deg);   /*scale(3.5);   rotate(360deg);  translate(150px,300px);*/	
+	-moz-transform:    skew(-10deg,10deg);   /* scale(3.5);  rotate(360deg);  translate(150px,300px);*/	
+	transform:  skew(-10deg,10deg)  scale(.5)    rotate(360deg) translate(150px,300px);
 }

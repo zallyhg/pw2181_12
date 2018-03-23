@@ -1,0 +1,44 @@
+img[alt]{
+	border: 5px solid blue;
+	width: 400px;
+}
+/*Imagen con atributo SRC al inicio de la cadena*/
+img[src^="img/"]{
+	width: 250px;
+
+
+}
+/*Imagen con atributo SRC al final de la cadena*/
+img[src$="png"]{
+	width: 10000px;
+
+}
+/*Imagen con atributo SRC en cualquier parte de la cadena*/
+
+img[src*="logo"]{
+	width: 200px;
+
+}
+/*Añadir atributos a una sola clase que esta con otras junta
+El caracter ~indica que estan separados por espacios*/
+article[class~="archivo"]{
+	border: 1px dashed red;
+}
+article[class~="ingles"]{
+	border: 1px dashed red;
+}
+/*El articulo class/id es una lista de valores separados porguiones*/
+article[class|="ingles"]{
+	border: 1px dashed red;
+}
+/* Selector de secundarios
+seleccionar solamente las <p> qyu¡¡ye se encuentran inmediatamente despues del <div>
+*/
+div > p{ /*solo hijos directos*/
+	color: blue;
+}
+
+/*Todos los elementos <p> seran seleccionados**/
+div p {
+	color: red;
+}
