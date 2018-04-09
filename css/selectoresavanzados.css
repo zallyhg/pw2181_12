@@ -38,7 +38,56 @@ div > p{ /*solo hijos directos*/
 	color: blue;
 }
 
-/*Todos los elementos <p> seran seleccionados**/
+/*Todos los elementos <p> seran seleccionados,**/
 div p {
 	color: red;
 }
+
+/*el mas (+) significa que aplique al siguiente, en este vcaso solo la p se pondra verde
+Seleccionar solo el elemento p que esta inmediatamente despues del elemento h2
+es decir hermano adyacente*/
+
+h2 + p{
+	color: green ;
+}
+/*Seleccionar todos los elementos p del elemento especificado
+esto es el hermano general*/
+h2 ~ p {
+	color:gray;
+}
+/*Poner en color rojo el texto de las secciones menos el id="referencias" */
+#resumen,#experimento,#pruebas,#resultados,#conclusiones
+{
+	color: tomato ;
+}
+
+section:not(#referencias){
+	color: hotpink;
+}
+
+/*------Numeros ordinales----*/
+
+/*recorrer de arriba hacia abajo*/
+/*Impares*/
+li:nth-child(odd){
+	color: green;
+}
+/*^Pares*/
+li:nth-child(even){
+	color: blue;
+}
+/*quinto elemento*/
+li:nth-child(5){
+	color: red;
+}
+
+/*recorrer de abajo hacia arriba*/
+/*ultimo = 1, penultimo=2 y asi consecutivamente*/
+li:nth-last-child(1){
+	color: yellow;
+}
+
+p:first-line{
+	font-weight: bold;
+}
+
