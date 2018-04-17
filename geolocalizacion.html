@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Geolocalizacion</title>
+</head>
+<body>
+	<p id="demo"> Obtener posicion en el mapa</p>
+	<button onclick="localizar();"> Aceptar </button>
+	<div id="mapa"> </div>
+
+	<script>
+		function muestraError(error){
+			var mensaje="";
+			switch(error.code){
+				case error.PERMISSION_DENNIED:
+				mensaje="El usuario rechazo la Geolocalizacion";
+				break;
+				case error.POSITION_UNAVAILABLE:
+					mensaje="Informacion de Geolocalizacion no disponible";
+				break;
+				case error.TIMEOUT:
+					mensaje="La solicitud de Geolocalizacion ha expirado";
+				break;
+				case error.UNKNOWN_ERROR:
+					mensaje="Error desconocido";
+				break;
+			}
+			document.getElementById("demo").innerHTML=mensaje;
+		}
+		function muestraPosicion(position){
+			var latitudLon=position.coords.latitude+"," + position.coords.longitude;
+			document.getElementById("demo").innerHTML=latitudLon;
+
+			var imagenMapa="https://maps.googleapis.com/maps/api/staticmap?center="+latitudLon+"&zoom=13&size=900x600&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyBNh6rswNlSCGSakynPsi2_zsSgKj-GyuI";
+			document.getElementById("mapa").innerHTML= "<img src='"+imagenMapa+"'>";
+			document.getElementById("demo").innerHTML=latitudLon;
+		}
+		function	localizar(){
+			if (navigator.geolocation) {
+				//preguntar si soporta geolocalizacion
+				navigator.geolocation.getCurrentPosition(muestraPosicion,muestraError);
+
+		}else{
+			document.getElementById("demo").innerHTML="El navegador no soporta geolocalizacion";
+		}
+	 }
+
+	 //api maps:  AIzaSyBNh6rswNlSCGSakynPsi2_zsSgKj-GyuI
+	</script>
+</body>
+</html>
