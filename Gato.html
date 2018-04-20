@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gato</title>
+</head>
+<body>
+
+	<p> Tiempo jugador <div id="TiempoJugador"> </div></p>
+	<p> Tiempo Total <div id="TiempoTotal"> </div> </p>
+
+	<button  id="a1" onclick="juega(); ">  </button>
+	<button  id="a2" onclick="juega(); ">  </button>
+	<button  id="a3" onclick="juega(); ">  </button>
+	<p></p>
+	<button  id="b1" onclick="juega(); ">  </button>
+	<button  id="b2" onclick="juega(); ">  </button>
+	<button  id="b3" onclick="juega(); ">  </button>
+	<p></p>
+	<button  id="c1" onclick="juega(); ">  </button>
+	<button  id="c2" onclick="juega(); ">  </button>
+	<button  id="c3" onclick="juega(); ">  </button>
+
+	<script>
+		var w1,w2,turno1,turno2,tiempoTotal,tiempoJugador;
+		
+		function juega()
+		{
+			//tiempo total 
+			if (typeof(Worker)!= "undefined")
+			{
+				if (typeof(w1)=="undefined") 
+				{
+					w1 = new Worker("demoWorker.js");
+					w1.onmessage = function(event)
+					{
+						document.getElementById('TiempoTotal').innerHTML=event.data;
+					}
+
+					w2 = new Worker("demoWorker.js");
+					w2.onmessage = function(event)
+					{
+						document.getElementById('TiempoJugador').innerHTML=event.data;
+					}
+				}
+			} 
+			else
+			{
+				alert("El navegador no soporta workers");
+			}
+
+			if (typeof(Worker)!= "undefined")
+			{
+				if (typeof(w2)!="undefined") 
+				{
+					w2.terminate();
+					w2=undefined;
+					w2 = new Worker("demoWorker.js");
+					w2.onmessage = function(event)
+					{
+						document.getElementById('TiempoJugador').innerHTML=event.data;
+					}
+				}
+			} 
+			else
+			{
+				alert("El navegador no soporta workers");
+			}
+
+		}
+		
+	</script>
+</body>
+</html>
