@@ -8,7 +8,8 @@ body{
 
 header input{
 	float: right;
-	
+	margin-right: -250px;
+	position: relative;
 }
 header nav{
 	margin-left: 220px;
