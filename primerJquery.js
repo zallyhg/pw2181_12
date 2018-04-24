@@ -1,4 +1,5 @@
 // son equivalentes:  jquery = $ 
+//https://randomuser.me/
 var inicia = function () {
 	alert("pagina lista")
 
