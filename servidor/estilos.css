@@ -4,8 +4,12 @@ body{
 	margin: 0 auto;
 	max-width: 1024px;
 }
+#frmUsuarios{
+	display: none;
+}
 
-#secInicio{
+
+#secInicio,#frmUsuarios{
 	margin: 0 auto;
 	margin-top: 50px;
 	width: 350px;
