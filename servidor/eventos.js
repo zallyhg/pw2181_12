@@ -46,15 +46,16 @@ var inicioApp = function(){
 			succes: function(response){
 				if (response.respuesta)==true{
 					alert("Bienvenido");
-					//ocultamos el inicio
-					$("#secInicio").hide("slow");
-					//aparecer usuarios
-					$("#frmUsuarios").show("slow");
-					//cursor en el primer cuadro de texto
-					$("#txtNombreUsuario").focus();
+					
+					$("#txtNombre").val(response.nombre);
+					
+					$("#txtClaveUsuario").val(response.clave);
+					//cursor en  2 cuadro de texto
+					
 
 				} else {
 					alert("Usuario o clave incorrecto(s)");
+					 $("#txtNombre").focus();
 				}
 			},
 			error: function(xhr,ajaxOptions,thrownError){
