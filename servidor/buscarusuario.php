@@ -11,11 +11,15 @@ function buscarusuario(){
 		
 		$respuesta=true;
 		while ($regConsulta=mysqli_fetch_array($resConsulta)) {
-			$nombre=$regConsulta["nombre"];
-			$nombre=$regConsulta["classkit_method_remove(classname, methodname)"];
+			$nombre=utf8_encode($regConsulta["nombre"]);
+			$nombre=$regConsulta["clave"];
+
+
 		}
 	}
 	$salidaJSON = array('respuesta' => $respuesta,'nombre'=> $nombre ,'clave' => $clave );
+
+	var_dump($salidaJSON);
 	print json_encode($salidaJSON);
 }
 

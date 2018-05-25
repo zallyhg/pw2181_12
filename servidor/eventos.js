@@ -64,12 +64,55 @@ var inicioApp = function(){
 		});
 		}
 	}
+
+	var Guardar= function{
+		var usuario=$("#txtUsuario").val();
+		var clave =$("#txtClave").val();
+		var parametros="opc=validaentrada"+"&usuario"+usuario+"&clave"+clave+"&aleatorio"+Math.random();
+
+		$.ajax({
+			cache:false,
+			type: "POST",
+			dataType: "json",
+			url: "php/guardarusuario.php",
+			data: parametros,
+			succes: function(response){
+				if (response.respuesta)==true{
+					alert("Bienvenido");
+					//ocultamos el inicio
+					$("#secInicio").hide("slow");
+					//aparecer usuarios
+					$("#frmUsuarios").show("slow");
+					//cursor en el primer cuadro de texto
+					$("#txtNombreUsuario").focus();
+
+				} else {
+					alert("Usuario o clave incorrecto(s)");
+				}
+			},
+			error: function(xhr,ajaxOptions,thrownError){
+
+			}
+		});
 	var teclaNombreUsuario = function(tecla){
 		if (tecla.which==13) {//enter 10 + 13
 			buscarUsuario();
 		}
 	}
+
+	var Guardar = function(){
+		var usuario =$("#txtNombreUsuario").val();
+		var nombre =$("#txtNombre").val();
+		var clave =$("#txtClaveUsuario").val();
+		if (usuario!="" && nombre!="" && clave!="") {
+
+		}else{
+			alert("Llene todos los campos");
+		}
+	}
+
 	$("#btnAceptar").on("click",Aceptar);
 	$("#txtNombreUsuario").on("keypress", teclaNombreUsuario);
+	$("#btnGuardar").on("click",Guardar);
 }
 $(document).ready(inicioApp);
