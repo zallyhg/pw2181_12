@@ -66,10 +66,10 @@ var inicioApp = function(){
 	}
 
 	var Guardar= function{
-		var usuario=$("#txtUsuario").val();
-		var clave =$("#txtClave").val();
-		var parametros="opc=validaentrada"+"&usuario"+usuario+"&clave"+clave+"&aleatorio"+Math.random();
-
+		var usuario =$("#txtNombreUsuario").val();
+		var nombre =$("#txtNombre").val();
+		var clave =$("#txtClaveUsuario").val();
+		if (usuario!="" && nombre!="" && clave!="") {
 		$.ajax({
 			cache:false,
 			type: "POST",
@@ -78,38 +78,30 @@ var inicioApp = function(){
 			data: parametros,
 			succes: function(response){
 				if (response.respuesta)==true{
-					alert("Bienvenido");
-					//ocultamos el inicio
-					$("#secInicio").hide("slow");
-					//aparecer usuarios
-					$("#frmUsuarios").show("slow");
-					//cursor en el primer cuadro de texto
-					$("#txtNombreUsuario").focus();
+					alert("datos guardados correvtamente");
+					$("#frmUsuarios">input).val();
 
 				} else {
-					alert("Usuario o clave incorrecto(s)");
+					alert("Ocurrio un error intente mas tarde");
 				}
 			},
 			error: function(xhr,ajaxOptions,thrownError){
 
 			}
 		});
+
+		}else{
+			alert("Llene todos los campos");
+		}
+	}
 	var teclaNombreUsuario = function(tecla){
 		if (tecla.which==13) {//enter 10 + 13
 			buscarUsuario();
 		}
 	}
 
-	var Guardar = function(){
-		var usuario =$("#txtNombreUsuario").val();
-		var nombre =$("#txtNombre").val();
-		var clave =$("#txtClaveUsuario").val();
-		if (usuario!="" && nombre!="" && clave!="") {
+	
 
-		}else{
-			alert("Llene todos los campos");
-		}
-	}
 
 	$("#btnAceptar").on("click",Aceptar);
 	$("#txtNombreUsuario").on("keypress", teclaNombreUsuario);
