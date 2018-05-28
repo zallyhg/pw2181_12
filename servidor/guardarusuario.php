@@ -14,7 +14,7 @@ function guardarusuario(){
 	$resConsulta=mysqli_query($con,$consulta);
 	$consultaGuarda="";
 	//Si ya existe en la tabla el usuario
-	if (mysqli_num_row($resConsulta) > 0) {
+	if (mysqli_num_rows($resConsulta) > 0) {
 		//actualizamos
 		$consultaGuarda=sprintf("update usuarios set nombre= %s,clave= %s, 
 			where usuario = %s",$nombre,$clave,$usuario);
@@ -22,7 +22,7 @@ function guardarusuario(){
 		$consultaGuarda=sprintf("insert into usuarios values(default,%s,%s,%s)",$usuario,$nombre,$clave);
 	}
 	mysqli_query($con,$consultaGuarda); //ejecuta la consulta
-	if (mysqli_affected_rows()  > 0) { //cantidad de registro afectados
+	if (mysqli_affected_rows($con)  > 0) { //cantidad de registro afectados
 		$respuesta=true;
 	}
 

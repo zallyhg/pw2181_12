@@ -32,30 +32,30 @@ var inicioApp = function(){
 	var buscarUsuario = function(){
 		var usuario =$("#txtNombreUsuario").val();
 		var parametros="opc=buscarUsuario"+
-						"&usuario="+usuario+
-						"&aleatorio="+Math.random();
+		"&usuario="+usuario+
+		"&aleatorio="+Math.random();
 		if(usuario != ""){
 
 
 			$.ajax({
-			cache:false,
-			type: "POST",
-			dataType: "json",
-			url: "php/validaentrada.php",
-			data: parametros,
-			succes: function(response){
-				if (response.respuesta)==true{
-					alert("Bienvenido");
-					
-					$("#txtNombre").val(response.nombre);
-					
-					$("#txtClaveUsuario").val(response.clave);
+				cache:false,
+				type: "POST",
+				dataType: "json",
+				url: "php/validaentrada.php",
+				data: parametros,
+				succes: function(response){
+					if (response.respuesta)==true{
+						alert("Bienvenido");
+
+						$("#txtNombre").val(response.nombre);
+
+						$("#txtClaveUsuario").val(response.clave);
 					//cursor en  2 cuadro de texto
 					
 
 				} else {
 					alert("Usuario o clave incorrecto(s)");
-					 $("#txtNombre").focus();
+					$("#txtNombre").focus();
 				}
 			},
 			error: function(xhr,ajaxOptions,thrownError){
@@ -69,26 +69,31 @@ var inicioApp = function(){
 		var usuario =$("#txtNombreUsuario").val();
 		var nombre =$("#txtNombre").val();
 		var clave =$("#txtClaveUsuario").val();
+		var parametros="opc=guardarUsuario"+
+		"&usuario="+usuario+
+		"&clave="+clave+
+		"&nombre"+nombre+
+		"&aleatorio"+Math.random();
 		if (usuario!="" && nombre!="" && clave!="") {
-		$.ajax({
-			cache:false,
-			type: "POST",
-			dataType: "json",
-			url: "php/guardarusuario.php",
-			data: parametros,
-			succes: function(response){
-				if (response.respuesta)==true{
-					alert("datos guardados correvtamente");
-					$("#frmUsuarios">input).val();
+			$.ajax({
+				cache:false,
+				type: "POST",
+				dataType: "json",
+				url: "php/guardarusuario.php",
+				data: parametros,
+				succes: function(response){
+					if (response.respuesta)==true{
+						alert("datos guardados correctamente");
+						$("#frmUsuarios">input).val();
 
-				} else {
-					alert("Ocurrio un error intente mas tarde");
+					} else {
+						alert("Ocurrio un error intente mas tarde");
+					}
+				},
+				error: function(xhr,ajaxOptions,thrownError){
+
 				}
-			},
-			error: function(xhr,ajaxOptions,thrownError){
-
-			}
-		});
+			});
 
 		}else{
 			alert("Llene todos los campos");
@@ -100,11 +105,39 @@ var inicioApp = function(){
 		}
 	}
 
-	
+	var Borrar = function () {
+		var usuario = $("#txtNombreUsuario").val();
+		var nombre = $("#txtNombre").val();
+		var pregunta = prompt("Seguro de borrar a"+nombre+"?", "No");
+		var parametros = "opc=borrarUsuario"+
+		"&usuario="+usuario+
+		"&nombre"+nombre;
+
+		if (pregunta != null&&pregunta=="si") {
+			//ajax
+
+			$.ajax({
+				url: "php/borrarusuario.php",
+				type: 'POST',
+				data: parametros,
+				succes: function(response){
+					if (response.respuesta)==true{
+						alert("Se ha eliminado exitosamente");	
+
+				} else {
+					alert("Datos incorrecto(s)");
+					
+				}
+			},
+			});
+			
+		}
+	}
 
 
 	$("#btnAceptar").on("click",Aceptar);
 	$("#txtNombreUsuario").on("keypress", teclaNombreUsuario);
 	$("#btnGuardar").on("click",Guardar);
+	$("#btnBorrar").on("click",Borrar);
 }
 $(document).ready(inicioApp);
