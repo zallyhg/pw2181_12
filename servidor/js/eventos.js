@@ -144,7 +144,7 @@ var inicioApp = function(){
 				data: parametros,
 				succes: function(response){
 					if (response.respuesta)==true{
-						$("#tblListado").append(response.tabla);
+						alert("");	
 						
 
 				} else {
