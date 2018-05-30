@@ -1,5 +1,5 @@
 var inicioApp = function(){
-	var Aceptar= function{
+	var Aceptar= function(){
 		var usuario=$("#txtUsuario").val();
 		var clave =$("#txtClave").val();
 		var parametros="opc=validaentrada"+"&usuario"+usuario+"&clave"+clave+"&aleatorio"+Math.random();

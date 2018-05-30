@@ -1,8 +1,8 @@
 var inicioApp = function(){
-	var Aceptar= function{
+	var Aceptar= function(){
 		var usuario=$("#txtUsuario").val();
 		var clave =$("#txtClave").val();
-		var parametros="opc=validaentrada"+"&usuario"+usuario+"&clave"+clave+"&aleatorio"+Math.random();
+		var parametros="opc=validaentrada"+"&usuario="+usuario+"&clave="+clave+"&aleatorio="+Math.random();
 
 		$.ajax({
 			cache:false,
@@ -10,8 +10,8 @@ var inicioApp = function(){
 			dataType: "json",
 			url: "php/validaentrada.php",
 			data: parametros,
-			succes: function(response){
-				if (response.respuesta)==true{
+			success: function(response){
+				if (response.respuesta==true){
 					alert("Bienvenido");
 					//ocultamos el inicio
 					$("#secInicio").hide("slow");
@@ -43,8 +43,8 @@ var inicioApp = function(){
 				dataType: "json",
 				url: "php/validaentrada.php",
 				data: parametros,
-				succes: function(response){
-					if (response.respuesta)==true{
+				success: function(response){
+					if (response.respuesta==true){
 						alert("Bienvenido");
 
 						$("#txtNombre").val(response.nombre);
@@ -65,7 +65,7 @@ var inicioApp = function(){
 		}
 	}
 
-	var Guardar= function{
+	var Guardar= function(){
 		var usuario =$("#txtNombreUsuario").val();
 		var nombre =$("#txtNombre").val();
 		var clave =$("#txtClaveUsuario").val();
@@ -81,8 +81,8 @@ var inicioApp = function(){
 				dataType: "json",
 				url: "php/guardarusuario.php",
 				data: parametros,
-				succes: function(response){
-					if (response.respuesta)==true{
+				success: function(response){
+					if (response.respuesta==true){
 						alert("datos guardados correctamente");
 						$("#frmUsuarios">input).val();
 
@@ -120,8 +120,8 @@ var inicioApp = function(){
 				url: "php/borrarusuario.php",
 				type: 'POST',
 				data: parametros,
-				succes: function(response){
-					if (response.respuesta)==true{
+				success: function(response){
+					if (response.respuesta==true){
 						alert("Se ha eliminado exitosamente");	
 						$("#frmUsuarios > input").val("");
 
@@ -142,9 +142,9 @@ var inicioApp = function(){
 				url: "php/listado.php",
 				type: 'POST',
 				data: parametros,
-				succes: function(response){
-					if (response.respuesta)==true{
-						alert("");	
+				success: function(response){
+					if (response.respuesta==true){
+						$("#tblListado").append(response.tabla);
 						
 
 				} else {
